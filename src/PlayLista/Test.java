@@ -19,12 +19,17 @@ public class Test {
 		
 		PlayList pl1 = new PlayList("imieniny");
 		pl1.addEl(song1);
+		pl1.addEl(song2);
+		pl1.play("sekwencyjnie");
+		//pl1.addEl(subList);
 		
+		/*
 		System.out.println(song1.getClass());
 		System.out.println(subList.getClass());
 		if ((subList.getClass().toString()).equals("class PlayLista.PlayList"))	{
 			System.out.println("hello");
 		}
+		*/
 		
 
 	}
