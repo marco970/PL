@@ -22,7 +22,7 @@ public class PlayList {
 		if (howToPlay.equals("")) playWay="losowo";
 		playWay = howToPlay;
 	}
-	
+	//
 	public void addEl(Track track)	{
 		
 	}
