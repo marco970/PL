@@ -16,7 +16,7 @@ public class Test {
 		//subSub.addElement(song4);
 		//subSub.addElement(song3);
 		
-		PlayList subPL = new PlayList("sub1");
+		PlayList subPL = new PlayList();
 		subPL.setPlayWayP("losowo");
 		subPL.addElement(movie2);
 		subPL.addElement(song2);
@@ -24,7 +24,8 @@ public class Test {
 		//subPL.addElement(subSub);
 		
 		
-		PlayList pl = new PlayList("moja1");
+		PlayList pl = new PlayList();
+		//pl.setPlayWayP("losowo");
 		pl.addElement(song1);
 		pl.addElement(subPL);
 		pl.addElement(movie1);

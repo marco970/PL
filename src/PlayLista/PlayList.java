@@ -1,7 +1,6 @@
 package PlayLista;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class PlayList {
@@ -9,11 +8,8 @@ public class PlayList {
 	ArrayList<SList> pList;
 	String playWayP="sekwencyjnie";
 	String PName;
-	private static int subListNo;
 	
-	public PlayList(String name)	{
-		PName = name;
-		subListNo = 0;
+	public PlayList()	{
 		pList = new ArrayList<SList>();
 	}
 	
@@ -26,6 +22,7 @@ public class PlayList {
 		sl.addTrack(t);		
 		pList.add(sl);
 	}
+	
 	public void addElement(PlayList pl)	{ //tu trzeba dodać sl....
 		SList b = new SList();
 		b.setPlayWayS(pl.getPlayWayP());
@@ -72,7 +69,4 @@ public class PlayList {
 	public ArrayList<SList> getPList()	{
 		return pList;
 	}
-	
-	
-	
 }
