@@ -2,18 +2,19 @@ package PlayLista;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PlayList {
 	
-	ArrayList<SList> PList;
-	String playWayP;
+	ArrayList<SList> pList;
+	String playWayP="sekwencyjnie";
 	String PName;
 	private static int subListNo;
 	
 	public PlayList(String name)	{
 		PName = name;
 		subListNo = 0;
-		PList = new ArrayList<SList>();
+		pList = new ArrayList<SList>();
 	}
 	
 	public void setPlayWayP(String playWay){
@@ -23,7 +24,7 @@ public class PlayList {
 	public void addElement(Track t)	{
 		SList sl = new SList();
 		sl.addTrack(t);		
-		PList.add(sl);
+		pList.add(sl);
 	}
 	public void addElement(PlayList pl)	{ //tu trzeba dodać sl....
 		SList b = new SList();
@@ -33,14 +34,34 @@ public class PlayList {
 				b.addTrack(tEl);
 			}
 		}
-		PList.add(b);
+		pList.add(b);
 	}
 	
-	public void playP(String howPlay)	{
-		playWayP = howPlay;
-		for (SList el: PList)	{
-			//System.out.println(el.toString());
-			el.playS();
+	public void playP()	{
+		if (playWayP.equals("zapetlenie"))	{
+			do	{
+				for (SList el: pList)	{
+					el.playS();
+				}
+			}
+			while(true);
+		}
+		else if(playWayP.equals("losowo"))	{
+			ArrayList<SList> rList = new ArrayList<SList>();
+			rList  = pList;
+			Random rand = new Random();
+			int sListSize = pList.size();
+			
+			for (int i=1; i<=sListSize; i++)	{
+				int rIndx = rand.nextInt(rList.size());
+				rList.get(rIndx).playS();
+				rList.remove(rIndx);
+			}
+		}
+		else	{		
+			for (SList el: pList)	{
+				el.playS();
+			}
 		}
 	}
 	
@@ -49,7 +70,7 @@ public class PlayList {
 	}
 	
 	public ArrayList<SList> getPList()	{
-		return PList;
+		return pList;
 	}
 	
 	

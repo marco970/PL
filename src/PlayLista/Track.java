@@ -1,25 +1,13 @@
 package PlayLista;
 
-import java.io.File;
-import java.util.List;
-
 public class Track  {
 	
 	String author;
 	String title;
-	String kind;
-	File file;
 	
 	public Track(String author, String title)	{
-		
-		//, String kind, File file - to dodać do konstruktora
-		
-		
 		this.author=author;
-		this.title=title;
-		this.kind=kind;
-		this.file=file;
-		
+		this.title=title;	
 	}
 	public Track(String title)	{
 		this.title=title;
@@ -35,17 +23,13 @@ public class Track  {
 		return title;
 	}
 
-	public String getKind() {
-		return kind;
-	}
-
-	public File getFile() {
-		return file;
-	}
 	
-	public String toString()	{
-		return "Autor: "+author+" tytuł: "+title;
+	public String toString()	{		
+		if (author.equals("Film"))	{
+			return "Film: "+title;
+		}
+		else {
+			return "Muzyka: "+author+", "+title;
+		}
 	}
-	
-
 }
