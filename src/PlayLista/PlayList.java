@@ -5,58 +5,53 @@ import java.util.List;
 
 public class PlayList {
 	
-	private String nazwa;
-	private Track utwor;
-	private ArrayList<Track> pLista;
-	private ArrayList<Track> subList;
-	private String playWay;
+	ArrayList<SList> PList;
+	String playWayP;
+	String PName;
+	private static int subListNo;
 	
-	
-	public PlayList (String nazwa)	{
-		this.nazwa = nazwa;
-		pLista = new ArrayList<Track>();
-		subList = new ArrayList<Track>();
-		playWay = "losowo";
-		
-	}
-	public void setHowToPlay(String howToPlay)	{
-		if (howToPlay.equals("")) playWay="losowo";
-		playWay = howToPlay;
-	}
-	//
-	public void addEl(Track track)	{
-		//int ile = pLista.size();
-		pLista.add(track);
-	}
-	/*
-	 
-	 
-	public void addEl(PlayList lista)	{
-		pLista.add(pLista.size()+1,lista);
+	public PlayList(String name)	{
+		PName = name;
+		subListNo = 0;
+		PList = new ArrayList<SList>();
 	}
 	
-	*/
-	public void play(String howToPlay)	{
-		playWay = howToPlay;
-		System.out.println("Odtwarzam playlistę '"+nazwa+"': tryb odtwarzania: "+ playWay);
-		for (Object el: pLista) {
-			
-			if (("").equals(howToPlay) || ("losowo").equals(howToPlay))	{
-				System.out.println(el.toString());
-			}
-			else if (("sekwencyjnie").equals(howToPlay))	{		
-				System.out.println(el.toString());
-			}
-			else if (("zapętlenie").equals(howToPlay))	{
-				System.out.println(el.toString());
-			}
-			
-			
-
-		
-		
-		//System.out.println("");
+	public void setPlayWayP(String playWay){
+		playWayP = playWay;
 	}
-
+	
+	public void addElement(Track t)	{
+		SList sl = new SList();
+		sl.addTrack(t);		
+		PList.add(sl);
 	}
+	public void addElement(PlayList pl)	{ //tu trzeba dodać sl....
+		SList b = new SList();
+		b.setPlayWayS(pl.getPlayWayP());
+		for (SList el: pl.getPList())	{
+			for (Track tEl: el.getSList())	{
+				b.addTrack(tEl);
+			}
+		}
+		PList.add(b);
+	}
+	
+	public void playP(String howPlay)	{
+		playWayP = howPlay;
+		for (SList el: PList)	{
+			//System.out.println(el.toString());
+			el.playS();
+		}
+	}
+	
+	public String getPlayWayP()	{
+		return playWayP;
+	}
+	
+	public ArrayList<SList> getPList()	{
+		return PList;
+	}
+	
+	
+	
 }
